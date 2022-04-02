@@ -1,0 +1,21 @@
+java -version
+sudo apt update
+sudo apt install default-jre
+java -version
+sudo apt install scala
+scala -version
+wget https://www.apache.org/dyn/closer.lua/spark/spark-3.2.1/spark-3.2.1-bin-hadoop2.7.tgz
+tar -xvzf spark-3.2.1-bin-hadoop2.7.tgz
+sudo mv spark-3.2.1-bin-hadoop2.7 /opt/spark
+echo "export SPARK_HOME=/opt/spark" >> ~/.profile
+echo "export PATH=$PATH:/opt/spark/bin:/opt/spark/sbin" >> ~/.profile
+echo "export PYSPARK_PYTHON=/usr/bin/python3" >> ~/.profile
+source ~/.profile
+ls -l /opt/spark
+start-master.sh
+start-workers.sh spark://localhost:7077
+
+http://localhost:8080/
+OR
+http://127.0.0.1:8080
+spark-shell
